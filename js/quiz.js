@@ -38,8 +38,13 @@ const handleDraw = () => {
 	cardLook.setAttribute('class', 'card-type');
 	liCard.innerHTML = cards[card - 1][0];
 	liCardValue.innerHTML = cards[card - 1][1];
+	const h1 = document.querySelector('H1');
+	h1.innerHTML = 'Circle Of Death';
 	for (var i = 0; i < spans.length; i++) {
 		spans[i].innerHTML = cards[card - 1][2];
+	}
+	if (cards[card - 1][2] === 'A') {
+		h1.innerHTML = 'Brandon Calls My Way!';
 	}
 	if (roundNumber > 5) {
 		console.log('Random Card is : ', card, 'Random Number : ', randomCard());
