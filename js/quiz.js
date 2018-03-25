@@ -44,7 +44,8 @@ const handleDraw = () => {
 	if (roundNumber > 5) {
 		console.log('Random Card is : ', card, 'Random Number : ', randomCard());
 		if (card === randomCard()) {
-			liCard.innerHTML = 'You popped the beer, DRINK UP BITCH!!!!'
+			h1.innerHTML = 'You Lost..';
+			liCard.innerHTML = 'DRINK UP BITCH!!!';
 			button.setAttribute('disabled', true);
 			button.setAttribute('style', 'background-color: lightgray;');
 		}
