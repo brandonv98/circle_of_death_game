@@ -64,7 +64,7 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 1.8em;
+  font-size: 3.8em;
   margin: 60px 0 40px;
 }
 
@@ -108,7 +108,8 @@ li {
   padding: 8px 0;
   display: list-item;
   width: 100%;
-  margin: 0;
+  margin: 2rem;
+  font-size: 3em;
   counter-increment: step-counter;
 }
 
@@ -146,6 +147,8 @@ li {
 
 span {
   color: red;
+  font-size: 3rem;
+  margin: 1rem;
 }
 
 .hidden {
@@ -159,7 +162,7 @@ span {
 
 .card {
   font-weight: bolder;
-  font-size: 1.5rem;
+  font-size: 5.5rem;
 }
 
 div.card-type {
@@ -169,7 +172,7 @@ div.card-type {
   margin: auto;
   width: 70%;
   border: 2px solid gray;
-  height: 18rem;
+  height: 48rem;
 }
 
 div[class="card-type"]>span {
