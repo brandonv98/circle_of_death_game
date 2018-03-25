@@ -16,24 +16,19 @@ const cards = [
 
 // const card;
 let roundNumber = 0;
-// Elements Selected
 const button = document.querySelector('BUTTON');
-const inputTag = document.querySelector('#user_input');
-const labelTag = inputTag.previousElementSibling;
 const liCard = document.querySelector('li[class="card"]');
 const liCardValue = document.querySelector('li[class="card-value"]');
 const spans = document.querySelectorAll('SPAN');
 
 const randomCard = () => {
 	let getCard = Math.ceil(Math.random() * cards.length);
-	// console.log(getCard);
 	return getCard;
 }
 
 const handleDraw = () => {
 	let card = randomCard();
 	roundNumber++;
-	// console.log('the Round is: ', roundNumber);
 	const cardLook = liCard.parentNode.parentNode;
 	cardLook.setAttribute('class', 'card-type');
 	liCard.innerHTML = cards[card - 1][0];
@@ -57,26 +52,3 @@ const handleDraw = () => {
 }
 
 button.addEventListener('click', handleDraw, true);
-
-function print(message) {
-	var outputDiv = document.getElementById('output');
-	outputDiv.innerHTML = message;
-}
-
-function buildList(arr) {
-	var listHTML = '<ol>';
-	for (var i = 0; i < arr.length; i += 1) {
-		listHTML += '<li>' + arr[i] + '</li>';
-	}
-	listHTML += '</ol>';
-	return listHTML;
-}
-
-resultsDisplay = () => {
-	html = "You got " + this.correctAnswers + " question(s) right."
-	html += '<h2>You got these questions correct:</h2>';
-	html += buildList(correct);
-	html += '<h2>You got these questions wrong:</h2>';
-	html += buildList(wrong);
-	print(html);
-}

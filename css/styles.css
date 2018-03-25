@@ -157,6 +157,11 @@ span {
   display: block;
 }
 
+.card {
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
 div.card-type {
   position: relative;
   display: flex;
@@ -164,7 +169,7 @@ div.card-type {
   margin: auto;
   width: 30%;
   border: 2px solid gray;
-  height: 15rem;
+  height: 18rem;
 }
 
 div[class="card-type"]>span {
