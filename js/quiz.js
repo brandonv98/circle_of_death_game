@@ -1,41 +1,54 @@
 const cards = [
-  ['Ace', 'Waterfall', 0],
-  ['King', 'Rule Master', 1],
-  ['Queen', 'Question Master', 2],
-  ['Jack', 'Thumb Master', 3],
-  ['Ten', 'Categories', 4],
-  ['Nine', 'Rhyme Time', 5],
-  ['Eight', 'Date', 6],
-  ['Seven', 'Heaven', 7],
-  ['Six', 'Dicks', 8],
-  ['Five', 'Never Have I Ever', 9],
-  ['Four', 'Whores', 10],
-  ['Three', 'ME', 11],
-  ['Two', 'YOU', 12]
+  ['Ace', 'Waterfall', 'A'],
+  ['King', 'Rule Master', 'K'],
+  ['Queen', 'Question Master', 'Q'],
+  ['Jack', 'Thumb Master', 'J'],
+  ['Ten', 'Categories', '10'],
+  ['Nine', 'Rhyme Time', '9'],
+  ['Eight', 'Date', '8'],
+  ['Seven', 'Heaven', '7'],
+  ['Six', 'Dicks', '6'],
+  ['Five', 'Never Have I Ever', '5'],
+  ['Four', 'Whores', '4'],
+  ['Three', 'ME', '3'],
+  ['Two', 'YOU', '2']
 ];
 
-
-let card;
-// var answer;
-// var response;
-// var correct = [];
-// var wrong = [];
+// const card;
+let roundNumber = 0;
 // Elements Selected
 const button = document.querySelector('BUTTON');
 const inputTag = document.querySelector('#user_input');
 const labelTag = inputTag.previousElementSibling;
-const pTagInput = document.querySelector('P[class="card"]');
+const liCard = document.querySelector('li[class="card"]');
+const liCardValue = document.querySelector('li[class="card-value"]');
+const spans = document.querySelectorAll('SPAN');
 
 const randomCard = () => {
 	let getCard = Math.ceil(Math.random() * cards.length);
-	console.log(getCard);
+	// console.log(getCard);
 	return getCard;
 }
 
 const handleDraw = () => {
 	let card = randomCard();
-	// console.log(cards[card - 1], card);
-	pTagInput.innerHTML = cards[card - 1][0];
+	roundNumber++;
+	// console.log('the Round is: ', roundNumber);
+	const cardLook = liCard.parentNode.parentNode;
+	cardLook.setAttribute('class', 'card-type');
+	liCard.innerHTML = cards[card - 1][0];
+	liCardValue.innerHTML = cards[card - 1][1];
+	for (var i = 0; i < spans.length; i++) {
+		spans[i].innerHTML = cards[card - 1][2];
+	}
+	if (roundNumber > 5) {
+		console.log('Random Card is : ', card, 'Random Number : ', randomCard());
+		if (card === randomCard()) {
+			liCard.innerHTML = 'You popped the beer, DRINK UP BITCH!!!!'
+			button.setAttribute('disabled', true);
+			button.setAttribute('style', 'background-color: lightgray;');
+		}
+	}
 }
 
 button.addEventListener('click', handleDraw, true);
