@@ -4,7 +4,7 @@ let roundNumber = 0;
 
 const button = document.querySelector('BUTTON');
 const liCard = document.querySelector('li[class="card"]');
-const liCardSuite = document.querySelector('li[class="card-desc"]');
+const liCardDesc = document.querySelector('li[class="card-desc"]');
 const spans = document.querySelectorAll('SPAN');
 
 const randomCard = () => {
