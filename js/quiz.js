@@ -1,44 +1,38 @@
-const cards = [
-  ['Ace', 'Waterfall', 'A'],
-  ['King', 'Rule Master', 'K'],
-  ['Queen', 'Question Master', 'Q'],
-  ['Jack', 'Thumb Master', 'J'],
-  ['Ten', 'Categories', '10'],
-  ['Nine', 'Rhyme Time', '9'],
-  ['Eight', 'Date', '8'],
-  ['Seven', 'Heaven', '7'],
-  ['Six', 'Dicks', '6'],
-  ['Five', 'Never Have I Ever', '5'],
-  ['Four', 'Whores', '4'],
-  ['Three', 'ME', '3'],
-  ['Two', 'YOU', '2']
-];
+ ////// IMPORTENT: 	 cardDeck.js runs first. 	///// 
 
-// const card;
 let roundNumber = 0;
+
 const button = document.querySelector('BUTTON');
 const liCard = document.querySelector('li[class="card"]');
-const liCardValue = document.querySelector('li[class="card-value"]');
+const liCardSuite = document.querySelector('li[class="card-desc"]');
 const spans = document.querySelectorAll('SPAN');
 
 const randomCard = () => {
-	let getCard = Math.ceil(Math.random() * cards.length);
+	let getCard = Math.ceil(Math.random() * myDeck.length);
 	return getCard;
 }
 
 const handleDraw = () => {
 	let card = randomCard();
 	roundNumber++;
+	let c = myDeck.length - 1;
 	const cardLook = liCard.parentNode.parentNode;
 	cardLook.setAttribute('class', 'card-type');
-	liCard.innerHTML = cards[card - 1][0];
-	liCardValue.innerHTML = cards[card - 1][1];
+	liCard.innerHTML = myDeck[c][0]; //// Card rank
+	liCardDesc.innerHTML = myDeck[c][2]; //// Card description
+	
 	const h1 = document.querySelector('H1');
 	h1.innerHTML = 'Circle Of Death';
 	for (var i = 0; i < spans.length; i++) {
-		spans[i].innerHTML = cards[card - 1][2];
+		spans[i].innerHTML = myDeck[c][1]; // Card suite
+		// Change color for different sute types.
+		if (myDeck[c][1] === '♠︎' || myDeck[c][1] === '♣︎') {
+			spans[i].style.color = 'black';
+		} else {
+			spans[i].style.color = 'red';
+		}
 	}
-	if (cards[card - 1][2] === 'A') {
+	if (myDeck[c][0] === 'Ace') {
 		h1.innerHTML = 'Brandon Calls My Way!';
 	}
 	if (roundNumber > 5) {
@@ -48,8 +42,14 @@ const handleDraw = () => {
 			liCard.innerHTML = 'DRINK!';
 			button.setAttribute('disabled', true);
 			button.setAttribute('style', 'background-color: lightgray;');
+		} else if (myDeck === 0) {
+			h1.innerHTML = 'The Deck is empty ';
+			liCard.innerHTML = 'The Deck is empty';
+			button.setAttribute('disabled', true);
+			button.setAttribute('style', 'background-color: lightgray;');
 		}
 	}
+myDeck.pop();
 }
 
 button.addEventListener('click', handleDraw, true);
